@@ -42,25 +42,39 @@ npm run build
 
 The built files will be in the `dist` folder.
 
+## Live Demo
+
+**Production URL**: [https://tripp-advance-request-app-v3.vercel.app](https://tripp-advance-request-app-v3.vercel.app)
+
+The application is deployed on Vercel with automatic deployments enabled via GitHub integration.
+
 ## Deployment to Vercel
 
-### Option 1: Via Vercel CLI
+This project is connected to Vercel with automatic deployments:
+- **GitHub Repository**: [https://github.com/djeckert17/tripp-advance-request-app-v3](https://github.com/djeckert17/tripp-advance-request-app-v3)
+- **Production URL**: [https://tripp-advance-request-app-v3.vercel.app](https://tripp-advance-request-app-v3.vercel.app)
+- Every push to `main` triggers an automatic production deployment
+- Pull requests receive preview deployments automatically
+
+### Manual Deployment Options
+
+#### Option 1: Via Vercel CLI
 
 ```bash
 # Install Vercel CLI
 npm i -g vercel
 
-# Deploy
-vercel
+# Deploy to production
+vercel --prod
 ```
 
-### Option 2: Via GitHub Integration
+#### Option 2: Via GitHub Integration
 
-1. Push this project to a GitHub repository
-2. Connect your repository to Vercel at [vercel.com](https://vercel.com)
-3. Vercel will automatically detect the Vite framework and deploy
+1. Push changes to the GitHub repository
+2. Vercel automatically detects and deploys changes
+3. View deployment status at [vercel.com](https://vercel.com)
 
-### Option 3: Manual Upload
+#### Option 3: Manual Upload
 
 1. Run `npm run build`
 2. Upload the `dist` folder to Vercel's drag-and-drop interface
