@@ -1591,14 +1591,23 @@ function BudgetMappingSection() {
 }
 
 function ChecklistSection() {
-  const [checkedItems, setCheckedItems] = useState({});
+  const [checkedItems, setCheckedItems] = useState(() => {
+    // Load saved checkbox states from localStorage on mount
+    const saved = localStorage.getItem('tripp-checklist-state');
+    return saved ? JSON.parse(saved) : {};
+  });
 
   const toggleItem = (section, index) => {
     const key = `${section}-${index}`;
-    setCheckedItems(prev => ({
-      ...prev,
-      [key]: !prev[key]
-    }));
+    setCheckedItems(prev => {
+      const newState = {
+        ...prev,
+        [key]: !prev[key]
+      };
+      // Save to localStorage whenever state changes
+      localStorage.setItem('tripp-checklist-state', JSON.stringify(newState));
+      return newState;
+    });
   };
 
   const renderChecklist = (items, section, icon, title, timing) => (
