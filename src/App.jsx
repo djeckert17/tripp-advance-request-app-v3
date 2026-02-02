@@ -879,13 +879,51 @@ const styles = `
      ======================================== */
   .example-section {
     margin: 2.5rem 0;
-    background: linear-gradient(135deg, 
-      rgba(201, 162, 39, 0.1) 0%, 
+    background: linear-gradient(135deg,
+      rgba(201, 162, 39, 0.1) 0%,
       rgba(44, 74, 92, 0.4) 100%
     );
     border: 1px solid rgba(201, 162, 39, 0.2);
     border-radius: 20px;
     padding: 1.75rem;
+  }
+
+  .budget-construction-notice {
+    background: linear-gradient(135deg,
+      rgba(201, 162, 39, 0.12) 0%,
+      rgba(44, 74, 92, 0.35) 100%
+    );
+    border: 1px solid rgba(201, 162, 39, 0.25);
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0 2rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .construction-badge {
+    background: var(--tripp-gold);
+    color: var(--tripp-navy);
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding: 0.25rem 0.625rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .construction-text {
+    margin: 0;
+    font-size: 0.9375rem;
+    color: rgba(255, 255, 255, 0.85);
+    line-height: 1.6;
+    flex: 1 1 0%;
+    min-width: 220px;
   }
 
   .example-header {
@@ -1134,6 +1172,17 @@ const styles = `
       padding: 1.5rem 1rem;
     }
 
+    .budget-construction-notice {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 1rem;
+    }
+
+    .construction-text {
+      font-size: 0.875rem;
+    }
+
     .form-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1249,73 +1298,73 @@ const phases = [
 const budgetMapping = [
   {
     category: "Salaries & Benefits",
-    amount: "$365,000",
+    amount: "TBD",
     percentage: 46,
     items: [
-      { name: "Prorated Salaries (8 staff)", value: "$305K" },
-      { name: "Health Insurance & Benefits", value: "$45K" },
-      { name: "Recruiting & Onboarding", value: "$15K" }
+      { name: "Prorated Salaries (8 staff)", value: "TBD" },
+      { name: "Health Insurance & Benefits", value: "TBD" },
+      { name: "Recruiting & Onboarding", value: "TBD" }
     ]
   },
   {
     category: "Professional Fees",
-    amount: "$310,000",
+    amount: "TBD",
     percentage: 39,
     note: "(incl. Outsourced CFO $35K)",
     items: [
-      { name: "Outsourced CFO Services (Q1)", value: "$35K" },
-      { name: "Legal Counsel (US)", value: "$100K" },
-      { name: "Regional Legal Counsel", value: "$50K" },
-      { name: "Audit & Tax Advisory", value: "$50K" },
-      { name: "Executive Search & IT Consulting", value: "$75K" }
+      { name: "Outsourced CFO Services (Q1)", value: "TBD" },
+      { name: "Legal Counsel (US)", value: "TBD" },
+      { name: "Regional Legal Counsel", value: "TBD" },
+      { name: "Audit & Tax Advisory", value: "TBD" },
+      { name: "Executive Search & IT Consulting", value: "TBD" }
     ]
   },
   {
     category: "Operating Expenses",
-    amount: "$82,000",
+    amount: "TBD",
     percentage: 10,
     items: [
-      { name: "Technology & Software", value: "$35K" },
-      { name: "Insurance (D&O, Cyber)", value: "$30K" },
-      { name: "Marketing & Website", value: "$8K" },
-      { name: "Telecom & Supplies", value: "$9K" }
+      { name: "Technology & Software", value: "TBD" },
+      { name: "Insurance (D&O, Cyber)", value: "TBD" },
+      { name: "Marketing & Website", value: "TBD" },
+      { name: "Telecom & Supplies", value: "TBD" }
     ]
   },
   {
     category: "Travel",
-    amount: "$15,000",
+    amount: "TBD",
     percentage: 2,
     items: [
-      { name: "Domestic (Recruiting, State meetings)", value: "$10K" },
-      { name: "International Setup (Reduced)", value: "$5K" }
+      { name: "Domestic (Recruiting, State meetings)", value: "TBD" },
+      { name: "International Setup (Reduced)", value: "TBD" }
     ]
   },
   {
     category: "Building Rent / Lease",
-    amount: "$15,000",
+    amount: "TBD",
     percentage: 2,
     items: [
-      { name: "DC HQ Co-working (3 mo)", value: "$10K" },
-      { name: "Armenia Office Setup", value: "$2.5K" },
-      { name: "Azerbaijan Office Setup", value: "$2.5K" }
+      { name: "DC HQ Co-working (3 mo)", value: "TBD" },
+      { name: "Armenia Office Setup", value: "TBD" },
+      { name: "Azerbaijan Office Setup", value: "TBD" }
     ]
   },
   {
     category: "Furniture & Fixtures",
-    amount: "$8,000",
+    amount: "TBD",
     percentage: 1,
     items: [
-      { name: "DC Office Equipment", value: "$5K" },
-      { name: "Regional Office Setup", value: "$3K" }
+      { name: "DC Office Equipment", value: "TBD" },
+      { name: "Regional Office Setup", value: "TBD" }
     ]
   },
   {
     category: "Other",
-    amount: "$5,000",
+    amount: "TBD",
     percentage: 1,
     items: [
-      { name: "Bank Fees & Setup", value: "$2K" },
-      { name: "FX & Contingency", value: "$3K" }
+      { name: "Bank Fees & Setup", value: "TBD" },
+      { name: "FX & Contingency", value: "TBD" }
     ]
   }
 ];
@@ -1547,10 +1596,16 @@ function BudgetMappingSection() {
     <section className="mapping-section">
       <div className="section-header">
         <div className="section-eyebrow">Budget Mapping</div>
-        <h2 className="section-title">Initial Draw Request: $800,000</h2>
+        <h2 className="section-title">Initial Draw Request: TBD</h2>
         <p className="section-description">
           How TRIPP+ budget line items map to State Department form categories for the first 90-day period.
-          <span className="savings-note">$50K cost savings vs. original through optimized budget model.</span>
+        </p>
+      </div>
+
+      <div className="budget-construction-notice">
+        <div className="construction-badge">UNDER CONSTRUCTION</div>
+        <p className="construction-text">
+          This budget is currently being revised. Dollar amounts shown as "TBD" will be updated once the new budget model is finalized.
         </p>
       </div>
 
