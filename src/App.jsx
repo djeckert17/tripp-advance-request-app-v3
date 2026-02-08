@@ -619,6 +619,52 @@ const styles = `
     font-size: 0.75rem;
   }
 
+  .mapping-item-expandable {
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background 0.2s ease;
+  }
+
+  .mapping-item-expandable:hover {
+    background: rgba(201, 162, 39, 0.08);
+  }
+
+  .expand-toggle {
+    display: inline-block;
+    width: 1rem;
+    font-size: 0.625rem;
+    color: var(--tripp-gold);
+    transition: transform 0.2s ease;
+  }
+
+  .mapping-sub-items {
+    padding-left: 1.5rem;
+    margin-bottom: 0.25rem;
+    border-left: 2px solid rgba(201, 162, 39, 0.2);
+    margin-left: 0.375rem;
+  }
+
+  .mapping-sub-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    font-size: 0.75rem;
+  }
+
+  .mapping-sub-item span:first-child {
+    color: var(--tripp-slate-gray);
+    opacity: 0.85;
+    font-size: 0.75rem;
+  }
+
+  .mapping-sub-item span:last-child {
+    font-family: var(--font-mono);
+    color: var(--tripp-warm-white);
+    opacity: 0.85;
+    font-size: 0.6875rem;
+  }
+
   .mapping-percentage {
     display: flex;
     align-items: center;
@@ -888,44 +934,6 @@ const styles = `
     padding: 1.75rem;
   }
 
-  .budget-construction-notice {
-    background: linear-gradient(135deg,
-      rgba(201, 162, 39, 0.12) 0%,
-      rgba(44, 74, 92, 0.35) 100%
-    );
-    border: 1px solid rgba(201, 162, 39, 0.25);
-    border-radius: 12px;
-    padding: 1rem 1.25rem;
-    margin: 1.5rem 0 2rem 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 1rem;
-    flex-wrap: wrap;
-  }
-
-  .construction-badge {
-    background: var(--tripp-gold);
-    color: var(--tripp-navy);
-    font-family: var(--font-mono);
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    padding: 0.25rem 0.625rem;
-    border-radius: 4px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
-
-  .construction-text {
-    margin: 0;
-    font-size: 0.9375rem;
-    color: rgba(255, 255, 255, 0.85);
-    line-height: 1.6;
-    flex: 1 1 0%;
-    min-width: 220px;
-  }
-
   .example-header {
     display: flex;
     justify-content: space-between;
@@ -1172,17 +1180,6 @@ const styles = `
       padding: 1.5rem 1rem;
     }
 
-    .budget-construction-notice {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 0.75rem;
-      padding: 1rem;
-    }
-
-    .construction-text {
-      font-size: 0.875rem;
-    }
-
     .form-grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1298,73 +1295,89 @@ const phases = [
 const budgetMapping = [
   {
     category: "Salaries & Benefits",
-    amount: "TBD",
-    percentage: 46,
+    amount: "$1,352,137",
+    percentage: 43.65,
     items: [
-      { name: "Prorated Salaries (8 staff)", value: "TBD" },
-      { name: "Health Insurance & Benefits", value: "TBD" },
-      { name: "Recruiting & Onboarding", value: "TBD" }
+      {
+        name: "Pro-rated Salaries + Benefits",
+        value: "$955,837",
+        subItems: [
+          { name: "MD/CIO", value: "$370,500" },
+          { name: "Deputy CIO", value: "$237,000" },
+          { name: "Board Secretary/EA", value: "$121,463" },
+          { name: "Investment Associate", value: "$113,437" },
+          { name: "Compliance Manager", value: "$113,437" }
+        ]
+      },
+      { name: "Recruiting & Onboarding", value: "$90,000" },
+      { name: "Bonus Payments (Est)", value: "$306,300" }
     ]
   },
   {
     category: "Professional Fees",
-    amount: "TBD",
-    percentage: 39,
-    note: "(incl. Outsourced CFO $35K)",
+    amount: "$970,889",
+    percentage: 31.34,
     items: [
-      { name: "Outsourced CFO Services (Q1)", value: "TBD" },
-      { name: "Legal Counsel (US)", value: "TBD" },
-      { name: "Regional Legal Counsel", value: "TBD" },
-      { name: "Audit & Tax Advisory", value: "TBD" },
-      { name: "Executive Search & IT Consulting", value: "TBD" }
+      { name: "Outsourced CFO Services (Q1)", value: "$175,000" },
+      { name: "Legal Counsel (US)", value: "$280,000" },
+      { name: "Investment / PE Specialists (Legal)", value: "$113,333" },
+      { name: "Regional Legal Counsel", value: "$90,667" },
+      { name: "Tax Advisor (Big Four)", value: "$62,472" },
+      { name: "Independent Auditor (Big Four)", value: "$72,083" },
+      { name: "Compliance & Sanctions", value: "$62,472" },
+      { name: "Independent Financial Advisor", value: "$48,056" },
+      { name: "Environmental & Social (E&S)", value: "$41,806" },
+      { name: "IT Support Desk", value: "$25,000" }
     ]
   },
   {
     category: "Operating Expenses",
-    amount: "TBD",
-    percentage: 10,
+    amount: "$365,625",
+    percentage: 11.80,
     items: [
-      { name: "Technology & Software", value: "TBD" },
-      { name: "Insurance (D&O, Cyber)", value: "TBD" },
-      { name: "Marketing & Website", value: "TBD" },
-      { name: "Telecom & Supplies", value: "TBD" }
+      { name: "Technology & Software", value: "$173,000" },
+      { name: "Insurance (D&O, Cyber)", value: "$115,333" },
+      { name: "Marketing & Website", value: "$41,375" },
+      { name: "Office Supplies & Equipment", value: "$20,000" },
+      { name: "Communications", value: "$15,000" },
+      { name: "Technology & Communications (Board)", value: "$917" }
     ]
   },
   {
     category: "Travel",
-    amount: "TBD",
-    percentage: 2,
+    amount: "$380,380",
+    percentage: 12.28,
     items: [
-      { name: "Domestic (Recruiting, State meetings)", value: "TBD" },
-      { name: "International Setup (Reduced)", value: "TBD" }
+      { name: "Domestic (Recruiting, State meetings)", value: "$274,213" },
+      { name: "International (Board)", value: "$40,333" },
+      { name: "Government Relations Travel", value: "$65,834" }
     ]
   },
   {
     category: "Building Rent / Lease",
-    amount: "TBD",
-    percentage: 2,
+    amount: "$13,792",
+    percentage: 0.45,
     items: [
-      { name: "DC HQ Co-working (3 mo)", value: "TBD" },
-      { name: "Armenia Office Setup", value: "TBD" },
-      { name: "Azerbaijan Office Setup", value: "TBD" }
+      { name: "DC HQ Co-working", value: "$13,792" }
     ]
   },
   {
     category: "Furniture & Fixtures",
-    amount: "TBD",
-    percentage: 1,
+    amount: "$0",
+    percentage: 0,
     items: [
-      { name: "DC Office Equipment", value: "TBD" },
-      { name: "Regional Office Setup", value: "TBD" }
+      { name: "DC Office Equipment", value: "$0" },
+      { name: "Regional Office Setup", value: "$0" }
     ]
   },
   {
     category: "Other",
-    amount: "TBD",
-    percentage: 1,
+    amount: "$15,000",
+    percentage: 0.48,
     items: [
-      { name: "Bank Fees & Setup", value: "TBD" },
-      { name: "FX & Contingency", value: "TBD" }
+      { name: "Bank Fees & Setup", value: "$15,000" },
+      { name: "FX & Contingency", value: "$0" },
+      { name: "Technology & Communications (Board)", value: "$0" }
     ]
   }
 ];
@@ -1402,12 +1415,12 @@ const pitfalls = [
 
 const exampleTimeline = [
   { date: "Feb 10", day: "Day 10", action: "CFO (acting/interim) begins budget review" },
-  { date: "Feb 13", day: "Day 13", action: "<strong>Map $800K budget</strong> to State form categories" },
+  { date: "Feb 13", day: "Day 13", action: "<strong>Map $594K budget</strong> to State form categories" },
   { date: "Feb 17", day: "Day 17", action: "Internal review (MD/CIO, Chairman)" },
   { date: "Feb 19", day: "Day 19", action: "📧 <strong>SUBMIT to GOR</strong> — Coverage: Feb 15 – May 15, 2026" },
   { date: "Feb 19-27", day: "Day 19-27", action: "State Department review (7 business days)" },
   { date: "Feb 27", day: "Day 27", action: "GOR approves, Treasury initiates wire" },
-  { date: "Feb 28", day: "Day 28", action: "💰 <strong>Wire arrives</strong> — Amount: $800,000" },
+  { date: "Feb 28", day: "Day 28", action: "💰 <strong>Wire arrives</strong> — Amount: $594,000" },
   { date: "Mar 1", day: "Day 30-45", action: "Dir Finance (or outsourced CFO) confirms receipt; Dir Finance/CCO start by Day 30-45" }
 ];
 
@@ -1592,20 +1605,19 @@ function FormStructureSection() {
 }
 
 function BudgetMappingSection() {
+  const [expandedItems, setExpandedItems] = useState({});
+
+  const toggleExpand = (key) => {
+    setExpandedItems(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
   return (
     <section className="mapping-section">
       <div className="section-header">
         <div className="section-eyebrow">Budget Mapping</div>
-        <h2 className="section-title">Initial Draw Request: TBD</h2>
+        <h2 className="section-title">Initial Draw Request: $594,000</h2>
         <p className="section-description">
-          How TRIPP+ budget line items map to State Department form categories for the first 90-day period.
-        </p>
-      </div>
-
-      <div className="budget-construction-notice">
-        <div className="construction-badge">UNDER CONSTRUCTION</div>
-        <p className="construction-text">
-          This budget is currently being revised. Dollar amounts shown as "TBD" will be updated once the new budget model is finalized.
+          Year One pro-rated budget breakdown by category. Total annual budget: $3,097,823.
         </p>
       </div>
 
@@ -1619,21 +1631,47 @@ function BudgetMappingSection() {
               </div>
               <div className="mapping-amount">{item.amount}</div>
             </div>
-            
+
             <div className="mapping-items">
-              {item.items.map((subItem, subIndex) => (
-                <div key={subIndex} className="mapping-item">
-                  <span>{subItem.name}</span>
-                  <span>{subItem.value}</span>
-                </div>
-              ))}
+              {item.items.map((subItem, subIndex) => {
+                const itemKey = `${index}-${subIndex}`;
+                const isExpanded = expandedItems[itemKey];
+                const hasSubItems = subItem.subItems && subItem.subItems.length > 0;
+
+                return (
+                  <div key={subIndex}>
+                    <div
+                      className={`mapping-item ${hasSubItems ? 'mapping-item-expandable' : ''}`}
+                      onClick={hasSubItems ? () => toggleExpand(itemKey) : undefined}
+                    >
+                      <span>
+                        {hasSubItems && (
+                          <span className="expand-toggle">{isExpanded ? '▾' : '▸'}</span>
+                        )}
+                        {subItem.name}
+                      </span>
+                      <span>{subItem.value}</span>
+                    </div>
+                    {hasSubItems && isExpanded && (
+                      <div className="mapping-sub-items">
+                        {subItem.subItems.map((nested, nestedIndex) => (
+                          <div key={nestedIndex} className="mapping-sub-item">
+                            <span>{nested.name}</span>
+                            <span>{nested.value}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
 
             <div className="mapping-percentage">
               <div className="percentage-bar">
-                <div 
-                  className="percentage-fill" 
-                  style={{ width: `${item.percentage}%` }}
+                <div
+                  className="percentage-fill"
+                  style={{ width: `${item.percentage > 0 ? Math.max(item.percentage, 1.5) : 0}%` }}
                 />
               </div>
               <div className="percentage-label">{item.percentage}%</div>
@@ -1755,7 +1793,7 @@ function ExampleSection() {
             Fund established February 1, 2026. Funds needed by Day 30-45 (March 1-15) for Dir Finance/CCO start and payroll.
           </p>
         </div>
-        <div className="example-amount">$800,000</div>
+        <div className="example-amount">$594,000</div>
       </div>
 
       <div className="example-timeline">
